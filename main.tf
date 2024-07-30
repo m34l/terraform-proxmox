@@ -23,6 +23,8 @@ resource "proxmox_vm_qemu" "proxmox_vm_master" {
 
   clone      = "ubuntu-2204-cloudinit-template"
   full_clone = true
+  clone_wait = true
+  
   # Konfigurasi VM
   cores       = var.vm_cores
   memory      = var.vm_memory
@@ -46,7 +48,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_master" {
 
   # Konfigurasi Cloud-Init
   ipconfig0 = "ip=dhcp"
-
+  
   # Konfigurasi Cloud-Init untuk SSH
   sshkeys = file(var.ci_ssh_public_key)
   ciuser  = var.ci_user
