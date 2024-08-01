@@ -23,7 +23,6 @@ resource "proxmox_vm_qemu" "proxmox_vm_master" {
 
   clone      = "ubuntu-2204-cloudinit-template"
   full_clone = true
-  clone_wait = true
   
   # Konfigurasi VM
   cores       = var.vm_cores
